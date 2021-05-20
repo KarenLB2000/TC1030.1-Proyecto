@@ -10,7 +10,7 @@ En cambio, en cuanto a las caraterísticas de los usuarios:
 El cliente o usuario registrado es aquel usuario que ha efectuado su alta en el sistema y que puede realizar consultas al catálogo de productos y navegar por este: ver videojuegos, sus descripciones y comprarlos. El administrador es el usuario encargado de realizar todas las funciones de gestión del sistema y modificaciones al mismo.
 
 # Funcionalidad
-Por el momento, siguen en desarrollo las funciones del programa. Por tanto, el contenido actual no representa el funcionamiento definito de éste. [En construcción]
+Por el momento, siguen en desarrollo las funciones del programa. Por tanto, el contenido actual no representa el funcionamiento definitivo de éste. [En construcción]
 
 # Consideraciones
 Para compilar el programa es necesario acceder a la consola e ingresar: "g++ main.cpp"
