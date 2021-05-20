@@ -8,3 +8,18 @@ En resumen, en cuanto a las funciones del programa encontramos: Funciones de bú
 En cambio, en cuanto a las caraterísticas de los usuarios:
 
 El cliente o usuario registrado es aquel usuario que ha efectuado su alta en el sistema y que puede realizar consultas al catálogo de productos y navegar por este: ver videojuegos, sus descripciones y comprarlos. El administrador es el usuario encargado de realizar todas las funciones de gestión del sistema y modificaciones al mismo.
+
+# Funcionalidad
+Por el momento, siguen en desarrollo las funciones del programa. Por tanto, el contenido actual no representa el funcionamiento definito de éste. [En construcción]
+
+# Consideraciones
+Para compilar el programa es necesario acceder a la consola e ingresar: "g++ main.cpp"
+
+Para ejecutar, se debe ingresar en la consola: "a.exe" o "./a.exe"
+
+# Correciones / modificaciones
+Para esta segunda entrega se realizaron los siguientes cambios:
+
+Se modificó el Diagrama de Clases de Plataforma.
+
+Se agregó la clase abstracta Usuario y sus clases hijas Cliente y Administrador, implementando así las clases con herencia.
