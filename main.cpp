@@ -9,7 +9,7 @@ using namespace std;
 #include "cliente.h"
 
 /* 
- * Avance 2: Tienda de Videojuegos Virutales
+ * Avance 2: Tienda online de Videojuegos Virtuales
  * Nombre: Ana Karen López Baltazar
  * Matrícula: A01707750
  * 20/05/2021
