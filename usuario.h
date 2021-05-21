@@ -12,7 +12,7 @@ using namespace std;
  * Título: usuario.h
  * Nombre: Ana Karen López Baltazar
  * Matrícula: A01707750
- * 19/05/2021
+ * 19/05/2021 (Avance 2)
 */
 
 /* 
