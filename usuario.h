@@ -6,13 +6,14 @@
 #include <string>
 #include <sstream>
 #include<stdlib.h>
+#include "plataforma.h"
 using namespace std;
 
 /* 
  * Título: usuario.h
  * Nombre: Ana Karen López Baltazar
  * Matrícula: A01707750
- * 19/05/2021 (Avance 2)
+ * 25/05/2021 (Avance 3)
 */
 
 /* 
@@ -25,12 +26,12 @@ using namespace std;
 
 // Declaración de Clase: Usuario
 class Usuario{
-	// Declaración de atributos (características)
+	// Atributos (características)
 	protected:
 		string username, nombre, apellidos, email;
 		int id;
 		
-	// Declaración de métodos (comportamientos)
+	// Métodos (comportamientos)
 	public:
 		//Constructor default y parametrizado [Sobrecarga - Overload]
 		Usuario();
@@ -42,12 +43,14 @@ class Usuario{
 		string getApellidos();
 		string getEmail();
 		int getId();
+
+		void visitaPlataforma(Plataforma p);
+		virtual void printUsuario();
 		
-		void setUsername(string nwu);
-		void setEmail(string nwe);
-		
-		string printUsuario();
-		void visitaPlataforma();
+		// Métodos en contrucción
+		virtual void modificaVideojuego(Plataforma p, string vnombre, float nprecio);
+		virtual void compraVideojuego(Plataforma p, string vnombre);
+		virtual void muestraBiblioteca();
 };
 
 /* 
@@ -123,45 +126,52 @@ int Usuario::getId(){
 }
 
 /* 
- * setter username
- * @param string: username o nombre del usuario 
+ * Permite al usuario al acceder/ visitar la plataforma y
+ * ver los videojuegos en ésta.
+ * @param Plataforma p: plataforma donde se encuentran los videojuegos
  * @return
 */
-void Usuario::setUsername(string nwu){
-	username = nwu;
+void Usuario::visitaPlataforma(Plataforma p){
+	p.muestraVideojuegos();	
 }
 
 /* 
- * setter email
- * @param string: email del usuario 
+ * Imrpime Datos del Usuario
+ * @param 
  * @return
 */
-void Usuario::setEmail(string nwe){
-	email = nwe;
+void Usuario::printUsuario(){
+	cout << "Username: " << username << endl; 
+	cout << "Nombre: " << nombre << " " << apellidos << endl;
+	cout << "Email: " << email << endl;
+	cout << "Id: " << id << endl;
 }
 
 /* 
- * Almacena valores de variables de instancia en cadena de texto
- * @param 
- * @return string: Datos del Usuario
-*/
-string Usuario::printUsuario(){
-	stringstream nm;
-	nm << "Username: " << username << "\n" << "Nombre: " << nombre << " " << apellidos << "\n";
-	nm << "Email: " << email << "\n" << "Id: " << id << "\n";
-	return nm.str();
-}
-	
-/* 
- * Permite al usuario al acceder a la plataforma o tienda virtual [En construcción]
+ * Método de Administrador. [En construcción]
  * @param 
  * @return
 */
-void Usuario::visitaPlataforma(){
-	cout << "[Metodo en construccion] \nEl objetivo es que el usuario acceda a la plataforma,\n";
-	cout << "siendo capaz de realizar una busqueda de un videojuego en\n";
-	cout << "el catalogo y teniendo la opcion de visualizar\n";
-	cout << "detalles del mismo.\n\n";
+void Usuario::modificaVideojuego(Plataforma p, string vnombre, float nprecio){
+	cout << "[En construcción]" << endl;
+}
+
+/* 
+ * Método de Cliente. [En construcción]
+ * @param
+ * @return
+*/
+void Usuario::compraVideojuego(Plataforma p, string vnombre){
+	cout << "[En construcción]" << endl;	
+}
+
+/* 
+ * Método de Cliente. [En construcción]
+ * @param
+ * @return
+*/
+void Usuario::muestraBiblioteca(){
+	cout << "[En construcción]" << endl;	
 }
 
 #endif // USUARIO_H

@@ -4,6 +4,8 @@
 using namespace std;
 
 // Clases
+#include "videojuego.h"
+#include "plataforma.h"
 #include "usuario.h"
 #include "administrador.h"
 #include "cliente.h"
@@ -12,67 +14,71 @@ using namespace std;
  * Avance 2: Tienda virtual de Videojuegos
  * Nombre: Ana Karen López Baltazar
  * Matrícula: A01707750
- * 20/05/2021 (Avance 2)
+ * 27/05/2021 (Avance 3)
 */
 
 /* 
  * Descripción:
  * Este programa fue desarrollado con la intención diseñar una plataforma
- * tienda virtual enfocada a la venta de videojuegos digitales.
- * La tienda incluye funciones de búsqueda, de compra y de gestión.
- * Y en este caso, se tienen dos tipos de usuarios: administrador y cliente.
- * NOTA: De momento, siguen en construcción algunas las clases y funciones
- * del programa. Por tanto, para este Avance 2, únicamente se manejan las
- * clases con herencia (Usuario, Administrador y Cliente).
+ * enfocada a la venta de videojuegos digitales. La tienda incluye funciones
+ * de búsqueda, de compra y de gestión. Además, ésta esta compuesta por
+ * arreglos de Videojeugos y Usuarios.
+ * En este caso, se tienen dos tipos de usuarios: administrador y cliente.
+ * NOTA: De momento, sigue en construcción la estructura final del main() y
+ * ciertas funciones de la clase Usuario.
 */
 
 int main(){
 	setlocale(LC_CTYPE,"Spanish");
 	
-	// Creación de objetos prueba con parámetros
-	Administrador admin("AndresAnba", "Andrés", "Anba Torres", "anbat@gmail.com", "Encargado de tienda");
-	Cliente client("SigmaE", "Emma", "Arellanes Garcia", "semarega@gmail.com", 24297491, 2984);
+	// Creación de la plataforma.
+	Plataforma plataforma;
+	plataforma.creaEjemplos();
 	
-	// Prueba de printUsuario(): Información del usuario
-	cout << "Informacion del ADMINISTRADOR\n" << admin.printUsuario() << endl;
-	cout << "Informacion del CLIENTE\n" << client.printUsuario() << endl;
-
-	// Prueba de visitaPlataforma(), gestionaPlataforma() y compraVideojuego()
-	cout << "El usuario visita la plataforma con visitaPlataforma()." << endl;
-	admin.visitaPlataforma();
+	// Creación de Usuarios.
+	Usuario *usuarios[100];
+	usuarios[0] = new Administrador("AndresAnba", "Andres", "Anba Torres", "anbat@gmail.com", "Encargado de tienda");
+	usuarios[1] = new Administrador("RafaelGM", "Rafael", "Guillen Mora", "rafagm@gmail.com", "Encargado de contenido");
+	usuarios[2] = new Cliente("SigmaE", "Emma", "Arellanes Garcia", "semarega@gmail.com", 2984);
+	usuarios[3] = new Cliente("Alisabel", "Isabel", "Hernandez Fuster", "alifuster@gmail.com", 3462);
+	int iu = 4;
 	
-	cout << "El administrador gestiona la plataforma con gestionaPlataforma()." << endl;
-	admin.gestionaPlataforma();
+	// Prueba de Usuario: visitaPlataforma()[Usuario] -> muestraVideojuegos() [Plataforma]
+	cout << "\nLos usuarios pueden acceder a la plataforma y" << endl;
+	cout << "ver los videojuegos disponibles en esta: \n" << endl;
+	usuarios[0] -> visitaPlataforma(plataforma);
+		
+	// Prueba de Administrador: printUsuario()[Usuario] -> POLIMORFISMO
+	cout << "\nEl administrador " << usuarios[0] -> getNombre() << " monitorea a todos los usuarios" << endl;
+	cout << "registrados, incluidos otros administradores: \n" << endl;
+	cout << "INFORMACION DE USUARIOS. " << endl;
+	for (int i = 0; i < iu; i++)
+		usuarios[i] -> printUsuario();
 	
-	cout << "El cliente compra videojuegos de la plataforma con compraVideojuego()." << endl;
-	client.compraVideojuego();
-
-	// Prueba de setters() y getters() para actualización de datos
-	/*CASO: Cambio de nombre de ususario.*/
-	cout << "El usuario " << client.getUsername() << " desea cambiar su nombre de usuario a DilemmaE" << endl;
-	client.setUsername("DilemmaE");
-	cout << "Tras la modificacion. \tUsername: " << client.getUsername() << "\n\n";
+	// Prueba de Administrador: modificaVideojuego()[Admin] -> buscaVideojuego()[Plataforma] -> 
+	// printVideojuego() y setPrecio()[Videojuego]
+	cout << "El administrador " << usuarios[1] -> getNombre() << " puede modificar" << endl;
+	cout << "el precio de un videojuego: \n" << endl;
+	usuarios[1] -> modificaVideojuego(plataforma, "Persona® 5 Strikers", 250);
 	
-	/*CASO: Cambio de cargo de administrador.*/
-	cout << "El administrador " << admin.getUsername() << "que desempeniaba el cargo de " << admin.getCargo() << "." << endl;
-	cout << "Ahora desempenia un nuevo cargo de Encargado de contenido." << endl;
-	admin.setCargo("Encargado de contenido");
-	cout << "Tras la modificacion. \tCargo: " << admin.getCargo() << "\n\n";
+	// Prueba de Cliente: compraVideojuego()[Cliente] -> buscaVideojuego()[Plataforma] ->
+	// printVideojuego(), getPrecio() y getNombre[Videojuego]
+	cout << "El/La client@ " << usuarios[2] -> getNombre() << " puede comprar vidoejuegos" << endl;
+	cout << "en la plataforma: \n" << endl;
+	usuarios[2] -> compraVideojuego(plataforma, "DOOM Eternal");
 	
-	/*CASO: Cambio de saldo disponible (dinero) de cliente.*/
-	cout << "El cliente " << client.getUsername() << "compra el Persona® 5 Strikers a un precio de $779.00." << endl;
-	cout << "Por tanto, su saldo disponible de $" << client.getDinero() << " sufre modificaciones (-$779.00)." << endl;
-	client.setDinero(2169);
-	cout << "Tras la modificacion. \tSaldo disponible: $" << client.getDinero() << "\n\n";
+	// Prueba de Cliente: muestraBiblioteca()[Cliente]
+	cout << "\nLos clientes pueden ver los videojuegos adquiridos en la biblioteca: \n" << endl;
+	cout << "Biblioteca de " << usuarios[2] -> getUsername() << "." << endl;
+	usuarios[2] -> muestraBiblioteca();
+	cout << "\nBiblioteca de " << usuarios[3] -> getUsername() << "." << endl;
+	usuarios[3] -> muestraBiblioteca();
+	cout << "En este caso el usuario " << usuarios[3] -> getUsername() << endl;
+	cout << "no tiene aún videojuegos en su biblioteca.\n" << endl;
+	
+	// Destrucción de objetos creados en el heap
+	for (int i = 0; i < iu; i++)
+		delete usuarios[i];
 	
 	return 0;
 }
-
-/* 
- * Consideraciones:
- * Existen clases y métodos por definir para implementar todas funcionalidades del programa.
- * Por tanto, se vuelve necesario seguir con el desarollo de éstas en avanves posteriores.
- * Así pues, las líneas de código de visitaPlataforma(), gestionaPlataforma() y compraVideojuego()
- * son temporales hasta incorporar las demás clases.Por otro lado, se seguirán revisando los métodos
- * y clases ya construidas a fin de evitar errores que impidan el correcto funcionamiento del programa.
-*/

@@ -3,16 +3,17 @@
 
 // Ficheros
 #include <iostream>
-#include "usuario.h"
 #include <string>
 #include <sstream>
+#include "usuario.h"
+#include "plataforma.h"
 using namespace std;
 
 /* 
  * Título: administrador.h
  * Nombre: Ana Karen López Baltazar
  * Matrícula: A01707750
- * 19/05/2021 (Avance 2)
+ * 25/05/2021 (Avance 3)
 */
 
 /* 
@@ -24,26 +25,19 @@ using namespace std;
 
 // Declaración de Clase: Administrador
 class Administrador: public Usuario{
-	// Declaración de atributos (características)
+	// Atributos (características)
 	private:
 		string cargo;
 		
-	// Declaración de métodos (comportamientos)
+	// Métodos (comportamientos)
 	public:
-		//Constructor default y parametrizado [Sobrecarga - Overload]
-		
 		/* 
 		* Constructor por default
 		* @param 
 		* @return Objeto Administrador 
 		*/
-		Administrador(): Usuario(){
-			username = " ";
-			nombre = " ";
-			apellidos = " ";
-			email = " ";
-			cargo = " ";
-			id = 0;			
+		Administrador():Usuario(){
+			cargo = " ";			
 		}
 
 		/* 
@@ -57,13 +51,14 @@ class Administrador: public Usuario{
 			cargo = c;
 		}
 		
-		// Métodos miembros de la clase	
+		// Métodos miembros de la clase
 		string getCargo();
-		void setCargo(string nwc);
-		void gestionaPlataforma();
+		
+		void modificaVideojuego(Plataforma p, string vnombre, float nprecio);
+		// void monitoreaUsuarios(Plataforma p);
 		
 		// [Sobreescritura - Override]
-		string printUsuario();
+		void printUsuario(); 
 };
 
 /* 
@@ -76,34 +71,41 @@ string Administrador::getCargo(){
 }
 
 /* 
- * setter cargo
- * @param string: cargo del administrador 
- * @return
-*/
-void Administrador::setCargo(string nwc){
-	cargo = nwc;
-}
-
-/* 
- * Almacena valores de variables de instancia en cadena de texto
- * @param 
- * @return string: Datos del Usuario [Administrador]
-*/
-string Administrador::printUsuario(){
-	stringstream nm;
-	nm << "Username: " << username << "\n" << "Nombre: " << nombre << " " << apellidos << "\n";
-	nm << "Email: " << email << "\n" << "Cargo: " << cargo << "\n" << "Id: " << id << "\n";
-	return nm.str();
-}
-
-/* 
- * Permite al usuario administrador gestionar la plataforma o tienda virtual [En construcción]
+ * Imprime los Datos del Usuario [Administrador]
  * @param 
  * @return
 */
-void Administrador::gestionaPlataforma(){
-	cout << "[Metodo en construccion] \nEl objetivo es que el administrador lleve a cabo\n";
-	cout << "funciones como realizar altas y bajas de productos asi como su edicion.\n\n";
+void Administrador::printUsuario(){
+	Usuario::printUsuario();
+	cout << "Cargo: " << cargo << "\n\n";
 }
+
+/* 
+ * Permite al administrador modificar el precio de un videojuego 
+ * en el catálogo de la plataforma
+ * @param Plataforma p: plataforma donde se encuentran los videojuegos,
+ * string vnombre: nombre dle videojuego a modificar, 
+ * float nprecio: nuevo precio del videojuego
+ * @return
+*/
+void Administrador::modificaVideojuego(Plataforma p, string vnombre, float nprecio){
+	Videojuego z = p.buscaVideojuego(vnombre);
+	cout << "DETALLES DEL VIDEOJUEGO." << endl;
+	z.printVideojuego();
+	z.setPrecio(nprecio);
+	cout << "DETALLES DEL VIDEOJUEGO [ACTUALIZADO]." << endl;
+	z.printVideojuego();
+}
+
+/* 
+ * Permite al administrador monitorear los usuarios registrados
+ * en la plataforma
+ * @param Plataforma p: plataforma donde se encuentran los videojuegos
+ * @return
+*/
+
+/* void Administrador::monitoreaUsuarios(Plataforma p){
+	p.muestraUsuarios();
+} */
 
 #endif // ADMINISTRADOR_H
