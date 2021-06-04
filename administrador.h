@@ -13,26 +13,25 @@ using namespace std;
  * Título: administrador.h
  * Nombre: Ana Karen López Baltazar
  * Matrícula: A01707750
- * 25/05/2021 (Avance 3)
-*/
-
-/* 
+ * 03/06/2021 (Avance 4)
+ *
  * Descripción:
  * Clase Administrador que es clase hija de Usuario.
  * Captura parcialmente comportmaiento y atributos
  * de un administrador a cargo de la gestión de la plataforma.
 */
 
-// Declaración de Clase: Administrador
+// Declaración de Clase: Administrador [Hija de Usuario]
 class Administrador: public Usuario{
-	// Atributos (características)
+	// Variables de instancia
 	private:
 		string cargo;
 		
-	// Métodos (comportamientos)
+	// Métodos miembros de la clase
 	public:
 		/* 
 		* Constructor por default
+		*
 		* @param 
 		* @return Objeto Administrador 
 		*/
@@ -42,6 +41,7 @@ class Administrador: public Usuario{
 
 		/* 
 		* Constructor parametrizado
+		*
 		* @param string u: username, string n: nombre,
 		* string a: apellidos, string e: email, 
 		* string cargo: cargo del administrador
@@ -51,18 +51,23 @@ class Administrador: public Usuario{
 			cargo = c;
 		}
 		
-		// Métodos miembros de la clase
 		string getCargo();
-		
+		void printUsuario();
 		void modificaVideojuego(Plataforma p, string vnombre, float nprecio);
-		// void monitoreaUsuarios(Plataforma p);
-		
-		// [Sobreescritura - Override]
-		void printUsuario(); 
+
+		/* 
+		* Se agregan los siguiente métodos a fin de evitar un error de
+		* compilación, pues si no sobreescribimos la función virtual 
+		* pura en la clase derivada, la clase derivada también se convierte
+		* en clase abstracta. (tutorialspoint.dev, 2019)
+		*/
+		void compraVideojuego(Plataforma p, string vnombre);
+		void muestraBiblioteca();
 };
 
 /* 
  * getter cargo
+ *
  * @param 
  * @return string: cargo del administrador
 */
@@ -71,7 +76,8 @@ string Administrador::getCargo(){
 }
 
 /* 
- * Imprime los Datos del Usuario [Administrador]
+ * printUsuario imrpime los atributos del Usuario [Administrador]
+ *
  * @param 
  * @return
 */
@@ -81,8 +87,9 @@ void Administrador::printUsuario(){
 }
 
 /* 
- * Permite al administrador modificar el precio de un videojuego 
- * en el catálogo de la plataforma
+ * modificaVideojuego permite al administrador modificar
+ * el precio de un videojuego en el catálogo de la plataforma
+ *
  * @param Plataforma p: plataforma donde se encuentran los videojuegos,
  * string vnombre: nombre dle videojuego a modificar, 
  * float nprecio: nuevo precio del videojuego
@@ -95,17 +102,20 @@ void Administrador::modificaVideojuego(Plataforma p, string vnombre, float nprec
 	z.setPrecio(nprecio);
 	cout << "DETALLES DEL VIDEOJUEGO [ACTUALIZADO]." << endl;
 	z.printVideojuego();
+}	
+	
+void Administrador::compraVideojuego(Plataforma p, string vnombre){
+	cout << "EN CONSTRUCCION." << endl;
 }
 
-/* 
- * Permite al administrador monitorear los usuarios registrados
- * en la plataforma
- * @param Plataforma p: plataforma donde se encuentran los videojuegos
- * @return
-*/
-
-/* void Administrador::monitoreaUsuarios(Plataforma p){
-	p.muestraUsuarios();
-} */
+void Administrador::muestraBiblioteca(){
+	cout << "EN CONSTRUCCION." << endl;			
+}	
 
 #endif // ADMINISTRADOR_H
+
+/*
+ * Referencias.
+ * 		tutorialspoint.dev (2019). Pure Virtual Functions and Abstract Classes in C++.
+ *		Recuperado de: https://tutorialspoint.dev/language/cpp/pure-virtual-functions-and-abstract-classes
+*/

@@ -13,28 +13,27 @@ using namespace std;
  * Título: cliente.h
  * Nombre: Ana Karen López Baltazar
  * Matrícula: A01707750
- * 25/05/2021 (Avance 3)
-*/
-
-/* 
+ * 03/06/2021 (Avance 4)
+ *
  * Descripción:
  * Clase Cliente que es clase hija de Usuario.
  * Captura parcialmente comportmaiento y atributos
  * de un cliente que visita y compra productos de la plataforma.
 */
 
-// Declaración de Clase: Cliente
+// Declaración de Clase: Cliente [Hija de Usuario]
 class Cliente: public Usuario{
-	// Atributos (características)
+	// Variables de instancia
 	private:
 		float dinero;
 		Videojuego biblioteca[100];
 		int ib;
 		
-	// Métodos (comportamientos)
+	// Métodos miembros de la clase
 	public:
 		/* 
 		 * Constructor por default
+		 *
 		 * @param 
 		 * @return Objeto Cliente 
 		*/
@@ -45,6 +44,7 @@ class Cliente: public Usuario{
 
 		/* 
 		 * Constructor parametrizado
+		 *
 		 * @param string u: username, string n: nombre,
 		 * string a: apellidos, string e: email, 
 		 * int: número de tarjeta del cliente
@@ -56,19 +56,24 @@ class Cliente: public Usuario{
 			ib = 0;
 		}
 		
-		// Métodos miembros de la clase	
 		float getDinero();
 		int getIb();
-		
 		void compraVideojuego(Plataforma p, string vnombre);
 		void muestraBiblioteca();
-		
-		// [Sobreescritura - Override]
 		void printUsuario();
+		
+		/* 
+		* Se agrega el siguiente método a fin de evitar un error de
+		* compilación, pues si no sobreescribimos la función virtual 
+		* pura en la clase derivada, la clase derivada también se convierte
+		* en clase abstracta. (tutorialspoint.dev, 2019)
+		*/
+		void modificaVideojuego(Plataforma p, string vnombre, float nprecio);
 };
 
 /* 
  * getter dinero
+ *
  * @param 
  * @return float: dinero en la tarjeta del cliente
 */
@@ -78,6 +83,7 @@ float Cliente::getDinero(){
 
 /* 
  * getter ib
+ *
  * @param 
  * @return int: número de videojuegos en la biblioteca del cliente
 */
@@ -86,9 +92,21 @@ int Cliente::getIb(){
 }
 
 /* 
- * Permite al cliente comprar algún videojuego de la plataforma
+ * printUsuario imrpime los atributos del Usuario [Cliente]
+ * @param 
+ * @return
+*/
+void Cliente::printUsuario(){
+	Usuario::printUsuario();
+	cout << "Saldo disponible: $" << dinero << "\n\n";
+}
+
+/* 
+ * compraVideojuego permite al cliente comprar algún 
+ * videojuego de la plataforma y agregarlo a su biblioteca
+ *
  * @param Plataforma p: plataforma donde se encuentran los videojuegos,
- * string vnombre: nombre del videojuego a comprar por el cliente,
+ * string vnombre: nombre del videojuego que el cliente está comprando,
  * @return
 */
 void Cliente::compraVideojuego(Plataforma p, string vnombre){
@@ -104,23 +122,29 @@ void Cliente::compraVideojuego(Plataforma p, string vnombre){
 }
 
 /* 
- * Permite al cliente ver los videojuegos en su biblioteca
+ * muestraBiblioteca permite al cliente ver los videojuegos en su biblioteca
+ *
  * @param 
  * @return
 */
 void Cliente::muestraBiblioteca(){
-	for (int i = 0; i < ib; i++)
-		biblioteca[i].printVideojuego(); 
+	if (ib == 0)
+		cout << "Sin videojuegos por el momento." << endl;
+	else{
+		cout << "Biblioteca." << endl;
+		for (int i = 0; i < ib; i++)
+			biblioteca[i].printVideojuego();
+	}
 }
 
-/* 
- * Imprime los Datos del Usuario [Cliente]
- * @param 
- * @return
-*/
-void Cliente::printUsuario(){
-	Usuario::printUsuario();
-	cout << "Saldo disponible: $" << dinero << "\n\n";
-}
-
+void Cliente::modificaVideojuego(Plataforma p, string vnombre, float nprecio){
+	cout << "EN CONSTRUCCION." << endl;			
+}	
+	
 #endif // CLIENTE_H
+
+/*
+ * Referencias.
+ * 		tutorialspoint.dev (2019). Pure Virtual Functions and Abstract Classes in C++.
+ *		Recuperado de: https://tutorialspoint.dev/language/cpp/pure-virtual-functions-and-abstract-classes
+*/

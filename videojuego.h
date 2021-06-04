@@ -11,10 +11,8 @@ using namespace std;
  * Título: videojuego.h
  * Nombre: Ana Karen López Baltazar
  * Matrícula: A01707750
- * 25/05/2021 (Avance 3)
-*/
-
-/* 
+ * 03/06/2021 (Avance 4)
+ *
  * Descripción:
  * Clase Videojuego, que captura parcialmente comportmaiento 
  * y atributos de un videojuego disponible en la plataforma.
@@ -22,28 +20,27 @@ using namespace std;
 
 // Declaración de Clase: Videojuego
 class Videojuego{
-	// Atributos (características)
+	// Variables de instancia
 	private:
 		string nombre, genero, descripcion;
 		float precio;
 		
-	// Métodos (comportamientos)
+	// Métodos miembros de la clase
 	public:
 		//Constructor default y parametrizado [Sobrecarga - Overload]
 		Videojuego();
 		Videojuego(string n, string d, string g, float p);
 
-		// Métodos miembros de la clase
 		string getNombre();
 		string getGenero();
 		float getPrecio();
 		void setPrecio(float np);
-		
-		void printVideojuego(); 
+		string printVideojuego(); 
 };
 
 /* 
  * Constructor por default
+ *
  * @param 
  * @return Objeto Videojuego 
 */
@@ -56,7 +53,8 @@ Videojuego::Videojuego(){
 
 /* 
  * Constructor parametrizado
- * @param string n: título o nombre del videojuego, string g: género del videojuego,
+ *
+ * @param string n: título del videojuego, string g: género del videojuego,
  * stringstream d: descripción del videojuego, float p: precio del videojuego
  * @return Objeto Videojuego 
 */
@@ -69,6 +67,7 @@ Videojuego::Videojuego(string n, string d, string g, float p){
 
 /* 
  * getter nombre
+ *
  * @param 
  * @return string: nombre del videojuego
 */
@@ -78,6 +77,7 @@ string Videojuego::getNombre(){
 
 /* 
  * getter genero
+ *
  * @param 
  * @return string: género del videojuego
 */
@@ -87,6 +87,7 @@ string Videojuego::getGenero(){
 
 /* 
  * getter precio
+ *
  * @param 
  * @return string: precio del videojuego
 */
@@ -96,6 +97,7 @@ float Videojuego::getPrecio(){
 
 /* 
  * setter precio
+ *
  * @param float np: nuevo precio del videojuego
  * @return
 */
@@ -104,15 +106,18 @@ void Videojuego::setPrecio(float np){
 }
 
 /* 
- * Imprime los Datos del Videojuego
+ * printVideojuego imprime los atributos del Videojuego
+ *
  * @param 
  * @return
 */
-void Videojuego::printVideojuego(){
-	cout << "Nombre: " << nombre << endl;
-	cout << "Genero: " << genero << endl;
-	cout << "Precio: $" << precio << endl;
-	cout << "Descripción: " << descripcion << endl;
+string Videojuego::printVideojuego(){
+	stringstream aux;
+	aux << "Nombre: " << nombre;
+	aux << "\nGenero: " << genero;
+	aux << "\nPrecio: $" << precio;
+	aux << "\nDescripción: " << descripcion;
+	return aux.str();
 }
 
 #endif // VIDEOJUEGO_H
