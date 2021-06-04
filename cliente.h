@@ -97,7 +97,10 @@ int Cliente::getIb(){
  * @return
 */
 void Cliente::printUsuario(){
-	Usuario::printUsuario();
+	cout << "Username: " << username << endl; 
+	cout << "Nombre: " << nombre << " " << apellidos << endl;
+	cout << "Email: " << email << endl;
+	cout << "Id: " << id << endl;
 	cout << "Saldo disponible: $" << dinero << "\n\n";
 }
 

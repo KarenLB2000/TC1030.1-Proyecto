@@ -171,7 +171,7 @@ int main(){
 		else if(funcion == 4){
 			string vm;
 			float newp;
-			cout << "\nAl administrador, tu " << usuarios[1] -> getNombre() << ", puedes modificar" << endl;
+			cout << "\nAl ser administrador, tu " << usuarios[ide] -> getNombre() << ", puedes modificar" << endl;
 			cout << "el precio de un videojuego." << endl;
 			cout << "Introduce el nuevo precio para el videojuego: ";
 			cin >> newp;

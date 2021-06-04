@@ -42,7 +42,7 @@ class Usuario{
 		void visitaPlataforma(Plataforma p);
 		
 		// Métodos abstractos [Sobreescritura]
-		virtual void printUsuario();
+		virtual void printUsuario() = 0;
 		virtual void modificaVideojuego(Plataforma p, string vnombre, float nprecio) = 0;
 		virtual void compraVideojuego(Plataforma p, string vnombre) = 0;
 		virtual void muestraBiblioteca() = 0;
@@ -136,19 +136,6 @@ int Usuario::getId(){
 */
 void Usuario::visitaPlataforma(Plataforma p){
 	p.muestraVideojuegos();	
-}
-
-/* 
- * printUsuario imrpime los atributos del Usuario
- *
- * @param 
- * @return
-*/
-void Usuario::printUsuario(){
-	cout << "Username: " << username << endl; 
-	cout << "Nombre: " << nombre << " " << apellidos << endl;
-	cout << "Email: " << email << endl;
-	cout << "Id: " << id << endl;
 }
 
 #endif // USUARIO_H

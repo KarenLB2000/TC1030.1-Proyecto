@@ -7,6 +7,7 @@
 #include <sstream>
 #include "usuario.h"
 #include "plataforma.h"
+#include "videojuego.h"
 using namespace std;
 
 /* 
@@ -82,7 +83,10 @@ string Administrador::getCargo(){
  * @return
 */
 void Administrador::printUsuario(){
-	Usuario::printUsuario();
+	cout << "Username: " << username << endl; 
+	cout << "Nombre: " << nombre << " " << apellidos << endl;
+	cout << "Email: " << email << endl;
+	cout << "Id: " << id << endl;
 	cout << "Cargo: " << cargo << "\n\n";
 }
 
