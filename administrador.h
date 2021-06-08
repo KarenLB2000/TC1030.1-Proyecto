@@ -14,7 +14,7 @@ using namespace std;
  * Título: administrador.h
  * Nombre: Ana Karen López Baltazar
  * Matrícula: A01707750
- * 03/06/2021 (Avance 4)
+ * 08/06/2021 (Avance Final)
  *
  * Descripción:
  * Clase Administrador que es clase hija de Usuario.
@@ -54,7 +54,7 @@ class Administrador: public Usuario{
 		
 		string getCargo();
 		void printUsuario();
-		void modificaVideojuego(Plataforma p, string vnombre, float nprecio);
+		void modificaVideojuego(Plataforma *p, string titulo, float nprecio);
 
 		/* 
 		* Se agregan los siguiente métodos a fin de evitar un error de
@@ -62,8 +62,8 @@ class Administrador: public Usuario{
 		* pura en la clase derivada, la clase derivada también se convierte
 		* en clase abstracta. (tutorialspoint.dev, 2019)
 		*/
-		void compraVideojuego(Plataforma p, string vnombre);
-		void muestraBiblioteca();
+		void compraVideojuego(Plataforma p, string titulo){cout << "EN CONSTRUCCION.\n";}	
+		void muestraBiblioteca(){cout << "EN CONSTRUCCION.\n";}
 };
 
 /* 
@@ -87,7 +87,7 @@ void Administrador::printUsuario(){
 	cout << "Nombre: " << nombre << " " << apellidos << endl;
 	cout << "Email: " << email << endl;
 	cout << "Id: " << id << endl;
-	cout << "Cargo: " << cargo << "\n\n";
+	cout << "Cargo: " << cargo << endl;
 }
 
 /* 
@@ -95,20 +95,12 @@ void Administrador::printUsuario(){
  * el precio de un videojuego en el catálogo de la plataforma
  *
  * @param Plataforma p: plataforma donde se encuentran los videojuegos,
- * string vnombre: nombre dle videojuego a modificar, 
+ * string titulo: título del videojuego a modificar, 
  * float nprecio: nuevo precio del videojuego
  * @return
 */
-void Administrador::modificaVideojuego(Plataforma p, string vnombre, float nprecio){
-	p.accedeVideojuego(vnombre, nprecio);
-}	
-	
-void Administrador::compraVideojuego(Plataforma p, string vnombre){
-	cout << "EN CONSTRUCCION." << endl;
-}
-
-void Administrador::muestraBiblioteca(){
-	cout << "EN CONSTRUCCION." << endl;			
+void Administrador::modificaVideojuego(Plataforma *p, string titulo, float nprecio){
+	p -> accedeVideojuego(titulo, nprecio);
 }	
 
 #endif // ADMINISTRADOR_H

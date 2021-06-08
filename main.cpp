@@ -13,10 +13,10 @@ using namespace std;
 #include "cliente.h"
 
 /* 
- * Avance 4: Plataforma virtual de Videojuegos
+ * Avance Final: Plataforma virtual de Videojuegos
  * Nombre: Ana Karen López Baltazar
  * Matrícula: A01707750
- * 03/06/2021 (Avance 4)
+ * 08/06/2021 (Avance Final)
  *
  * Descripción:
  * Este programa fue desarrollado con la intención diseñar una plataforma
@@ -24,10 +24,6 @@ using namespace std;
  * de búsqueda, de compra y de gestión. Además, ésta esta compuesta por
  * arreglos de Videojeugos y Usuarios.
  * En este caso, se tienen dos tipos de usuarios: administrador y cliente.
- *
- * NOTA: Existen problemas con las opciones de: 
- * 2. Buscar videojuego Línea 111 Error con la captura de datos
- * 4. Modificar videojuego Línea 129 Error interno de Plataforma [Línea 161]
 */
 
 // Función menuA(): Imprime las opciones que existen para Administrador
@@ -70,7 +66,7 @@ int main(){
 	// Decisión sobre acceso como Administrador o Cliente.
 	int acceso, ide, funcion;
 	bool admin, cliente;
-	cout << "\nOpciones de ajuste de acceso: \n";
+	cout << "\nOpciones de acceso: \n";
 	cout << "[1] Acceder como Administrador \n[2] Acceder como Cliente" << endl;
 	cout << "Introduce tu eleccion sobre ajuste de acceso: ";
 	cin >> acceso;
@@ -109,44 +105,46 @@ int main(){
 		}
 
 		else if(funcion == 2){
-			// string titulo;
+			string titulo;
 			cout << "\nLos usuarios pueden buscar un videojuego en la plataforma" << endl;
-			cout << "introduciendo su nombre para ver su descripcion completa." << endl;
+			cout << "introduciendo su titulo para ver su descripcion completa." << endl;
 			cout << "Introduce el nombre del videojuego a buscar: ";
-			// getline(cin, titulo);
-			// cin.ignore();
-			cout << "\n\nINFORMACION DEL VIDEOJUEGO." << endl;
-			usuarios[ide] -> visualizaVideojuego(plataforma, "OMORI");
+			cin.ignore();
+			getline(cin, titulo);
+			cout << "\nINFORMACION DEL VIDEOJUEGO." << endl;
+			usuarios[ide] -> visualizaVideojuego(plataforma, titulo);
 		}
 		
 		else if(funcion == 3){
-			cout << "\nAl ser administrador, tu " << usuarios[ide] -> getNombre() << ", puedes monitorear a los usuarios" << endl;
+			cout << "\nAl ser administrador, tu " << usuarios[ide] -> getUsername() << ", puedes monitorear a los usuarios" << endl;
 			cout << "registrados en la plataforma, incluidos a otros administradores: \n" << endl;
 			cout << "INFORMACION DE USUARIOS. " << endl;
-			for (int i = 0; i < iu; i++)
-				usuarios[i] -> printUsuario();			
+			for (int i = 0; i < iu; i++){
+				usuarios[i] -> printUsuario();
+				cout <<	endl;			
+			}	
 		}
 		
 		else if(funcion == 4){
-			// string mjuego;
-			float newp;
-			cout << "\nAl ser administrador, tu " << usuarios[ide] -> getNombre() << ", puedes modificar" << endl;
+			string mjuego;
+			float nprecio;
+			cout << "\nAl ser administrador, tu " << usuarios[ide] -> getUsername() << ", puedes modificar" << endl;
 			cout << "el precio de un videojuego." << endl;
+			cout << "Introduce el titulo del videojuego a modificar: ";
+			cin.ignore();
+			getline(cin, mjuego);
 			cout << "Introduce el nuevo precio para el videojuego: ";
-			cin >> newp;
-			// cout << "Introduce el nombre del videojuego a modificar: ";
-			// getline(cin, mjuego);
-			// cin.ignore();
-			usuarios[ide] -> modificaVideojuego(plataforma, "OMORI", newp);			
+			cin >> nprecio;
+			usuarios[ide] -> modificaVideojuego(&plataforma, mjuego, nprecio);			
 		}
 		
 		else if(funcion == 5){
-			cout << "\nGracias por utilizar el programa. \n";
+			cout << "\nGracias por utilizar el programa.\n"  << endl;
 			break;		
 		}
 		
 		else{
-			cout << "\nError. Opción inválida. \n";
+			cout << "\nError. Opcion invalida.\n" << endl;
 			break;
 		}
 	}
@@ -164,39 +162,39 @@ int main(){
 		}
 
 		else if(funcion == 2){
-			// string titulo;
+			string titulo;
 			cout << "\nLos usuarios pueden buscar un videojuego en la plataforma" << endl;
-			cout << "introduciendo su nombre para ver su descripcion completa." << endl;
-			cout << "Introduce el nombre del videojuego a buscar: ";
-			// getline(cin, titulo);
-			// cin.ignore();
-			cout << "\n\nINFORMACION DEL VIDEOJUEGO." << endl;
-			usuarios[ide] -> visualizaVideojuego(plataforma, "OMORI");
+			cout << "introduciendo su titulo para ver su descripcion completa." << endl;
+			cout << "Introduce el titulo del videojuego a buscar: ";
+			cin.ignore();
+			getline(cin, titulo);
+			cout << "\nINFORMACION DEL VIDEOJUEGO." << endl;
+			usuarios[ide] -> visualizaVideojuego(plataforma, titulo);
 		}
 		
 		else if(funcion == 3){
-			// string cjuego;
-			cout << "\nAl ser un cliente, tu" << usuarios[ide] -> getNombre() << ", puedes comprar videojuegos" << endl;
+			string cjuego;
+			cout << "\nAl ser un cliente, tu " << usuarios[ide] -> getUsername() << ", puedes comprar videojuegos" << endl;
 			cout << "de la plataforma y agregarlos a tu biblioteca." << endl;
-			cout << "Introduce el nombre del videojuego a comprar: ";
-			// getline(cin, cjuego);
-			// cin.ignore();			
-			usuarios[ide] -> compraVideojuego(plataforma, "OMORI");
+			cout << "Introduce el titulo del videojuego a comprar: ";
+			cin.ignore();	
+			getline(cin, cjuego);			
+			usuarios[ide] -> compraVideojuego(plataforma, cjuego);
 		}
 		
 		else if(funcion == 4){
-			cout << "\nAl ser un cliente, tu " << usuarios[ide] -> getNombre() << "puedes ver los videojuegos" << endl;
+			cout << "\nAl ser un cliente, tu " << usuarios[ide] -> getUsername() << ", puedes ver los videojuegos" << endl;
 			cout << "que has adquirido en tu biblioteca." << endl;
 			usuarios[ide] -> muestraBiblioteca();
 		}
 		
 		else if(funcion == 5){
-			cout << "\nGracias por utilizar el programa. \n";
+			cout << "\nGracias por utilizar el programa.\n"  << endl;
 			break;		
 		}
 		
 		else{
-			cout << "\nError. Opción inválida. \n";
+			cout << "\nError. Opcion invalida.\n" << endl;
 			break;
 		}
 	}

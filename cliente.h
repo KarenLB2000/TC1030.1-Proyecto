@@ -13,7 +13,7 @@ using namespace std;
  * Título: cliente.h
  * Nombre: Ana Karen López Baltazar
  * Matrícula: A01707750
- * 03/06/2021 (Avance 4)
+ * 08/06/2021 (Avance Final)
  *
  * Descripción:
  * Clase Cliente que es clase hija de Usuario.
@@ -58,7 +58,7 @@ class Cliente: public Usuario{
 		
 		float getDinero();
 		int getIb();
-		void compraVideojuego(Plataforma p, string vnombre);
+		void compraVideojuego(Plataforma p, string titulo);
 		void muestraBiblioteca();
 		void printUsuario();
 		
@@ -68,7 +68,9 @@ class Cliente: public Usuario{
 		* pura en la clase derivada, la clase derivada también se convierte
 		* en clase abstracta. (tutorialspoint.dev, 2019)
 		*/
-		void modificaVideojuego(Plataforma p, string vnombre, float nprecio);
+		void modificaVideojuego(Plataforma *p, string titulo, float nprecio){
+			cout << "EN CONSTRUCCION.\n";
+		}
 };
 
 /* 
@@ -101,7 +103,7 @@ void Cliente::printUsuario(){
 	cout << "Nombre: " << nombre << " " << apellidos << endl;
 	cout << "Email: " << email << endl;
 	cout << "Id: " << id << endl;
-	cout << "Saldo disponible: $" << dinero << "\n\n";
+	cout << "Saldo disponible: $" << dinero << endl;
 }
 
 /* 
@@ -109,17 +111,17 @@ void Cliente::printUsuario(){
  * videojuego de la plataforma y agregarlo a su biblioteca
  *
  * @param Plataforma p: plataforma donde se encuentran los videojuegos,
- * string vnombre: nombre del videojuego que el cliente está comprando,
+ * string titulo: título del videojuego a comprar
  * @return
 */
-void Cliente::compraVideojuego(Plataforma p, string vnombre){
-	Videojuego z = p.accedeVideojuego(vnombre);
+void Cliente::compraVideojuego(Plataforma p, string titulo){
+	Videojuego z = p.accedeVideojuego(titulo);
 	dinero = dinero - z.getPrecio();
 	biblioteca[ib] = z;
 	ib++;
 	cout << "\n\nDETALLES DE COMPRA." << endl;
 	cout << "Username: " << username << "\tEmail: " << email << endl;
-	cout << "Título" << z.getNombre() << "\tPrecio: $" << z.getPrecio() << endl;
+	cout << "Título" << z.getTitulo() << "\tPrecio: $" << z.getPrecio() << endl;
 	cout << "¡Pago exitoso!" << "\tSaldo tras la compra: $" << dinero << endl;
 	cout << "Ahora puede encontrosr el videojuego en su biblioteca." << endl;
 }
@@ -140,10 +142,6 @@ void Cliente::muestraBiblioteca(){
 	}
 }
 
-void Cliente::modificaVideojuego(Plataforma p, string vnombre, float nprecio){
-	cout << "EN CONSTRUCCION." << endl;			
-}	
-	
 #endif // CLIENTE_H
 
 /*

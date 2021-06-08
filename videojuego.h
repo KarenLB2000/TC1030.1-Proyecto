@@ -11,7 +11,7 @@ using namespace std;
  * Título: videojuego.h
  * Nombre: Ana Karen López Baltazar
  * Matrícula: A01707750
- * 03/06/2021 (Avance 4)
+ * 08/06/2021 (Avance Final)
  *
  * Descripción:
  * Clase Videojuego, que captura parcialmente comportmaiento 
@@ -22,7 +22,7 @@ using namespace std;
 class Videojuego{
 	// Variables de instancia
 	private:
-		string nombre, genero, descripcion;
+		string titulo, genero, descripcion;
 		float precio;
 		
 	// Métodos miembros de la clase
@@ -31,7 +31,7 @@ class Videojuego{
 		Videojuego();
 		Videojuego(string n, string d, string g, float p);
 
-		string getNombre();
+		string getTitulo();
 		string getGenero();
 		float getPrecio();
 		void setPrecio(float np);
@@ -45,7 +45,7 @@ class Videojuego{
  * @return Objeto Videojuego 
 */
 Videojuego::Videojuego(){
-	nombre = " ";
+	titulo = " ";
 	genero = " ";
 	descripcion = " ";
 	precio = 0;
@@ -54,12 +54,12 @@ Videojuego::Videojuego(){
 /* 
  * Constructor parametrizado
  *
- * @param string n: título del videojuego, string g: género del videojuego,
+ * @param string t: título del videojuego, string g: género del videojuego,
  * stringstream d: descripción del videojuego, float p: precio del videojuego
  * @return Objeto Videojuego 
 */
-Videojuego::Videojuego(string n, string d, string g, float p){
-	nombre = n;
+Videojuego::Videojuego(string t, string d, string g, float p){
+	titulo = t;
 	genero = g;
 	descripcion = d;
 	precio = p;
@@ -71,8 +71,8 @@ Videojuego::Videojuego(string n, string d, string g, float p){
  * @param 
  * @return string: nombre del videojuego
 */
-string Videojuego::getNombre(){
-	return nombre;
+string Videojuego::getTitulo(){
+	return titulo;
 }
 
 /* 
@@ -113,7 +113,7 @@ void Videojuego::setPrecio(float np){
 */
 string Videojuego::printVideojuego(){
 	stringstream aux;
-	aux << "Nombre: " << nombre;
+	aux << "Titulo: " << titulo;
 	aux << "\nGenero: " << genero;
 	aux << "\nPrecio: $" << precio;
 	aux << "\nDescripción: " << descripcion;

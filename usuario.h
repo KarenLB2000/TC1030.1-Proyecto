@@ -13,7 +13,7 @@ using namespace std;
  * Título: usuario.h
  * Nombre: Ana Karen López Baltazar
  * Matrícula: A01707750
- * 03/06/2021 (Avance 4)
+ * "Sobreescritura de función virtual pura en la clase derivada"
  *
  * Descripción:
  * Clase Usuario que contiene los métodos genéricos
@@ -44,8 +44,8 @@ class Usuario{
 		
 		// Métodos abstractos [Sobreescritura]
 		virtual void printUsuario() = 0;
-		virtual void modificaVideojuego(Plataforma p, string vnombre, float nprecio) = 0;
-		virtual void compraVideojuego(Plataforma p, string vnombre) = 0;
+		virtual void modificaVideojuego(Plataforma *p, string titulo, float nprecio) = 0;
+		virtual void compraVideojuego(Plataforma p, string titulo) = 0;
 		virtual void muestraBiblioteca() = 0;
 };
 
