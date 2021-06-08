@@ -35,7 +35,9 @@ class Plataforma{
 		Plataforma();
 
 		void creaEjemplos();
-		Videojuego buscaVideojuego(string nj);
+		void buscaVideojuego(string njuego);
+		void accedeVideojuego(string ajuego, float nprecio);
+		Videojuego accedeVideojuego(string ajuego);
 		void muestraVideojuegos();
 };
 
@@ -100,7 +102,6 @@ void Plataforma::creaEjemplos(){
 	videojuegos[5] = v5;
 	
 	iv = 6;
-	
 }
 
 /* 
@@ -109,15 +110,55 @@ void Plataforma::creaEjemplos(){
  * de éste, viendo entonces su descripción completa 
  * (información de sus atributos).
  *
- * @param string nj: nombre de videojuego a buscar en el catálogo
+ * @param string njuego: nombre de videojuego a buscar en la plataforma
  * @return  
 */
-Videojuego Plataforma::buscaVideojuego(string nj){
-	int nv;
-	for (int i = 0; i < iv; i++)
-		if (nj == videojuegos[i].getNombre())
-			nv = i;		
-	return videojuegos[nv];
+void Plataforma::buscaVideojuego(string njuego){
+	for (int i = 0; i < iv; i++){
+		if (njuego == videojuegos[i].getNombre())
+			cout << videojuegos[i].printVideojuego();
+	}
+}
+
+/* 
+ * accedeVideojuego() permite al usuario [Administrador] acceder a un 
+ * videojuego específico a partir de ingresar el nombre de éste.
+ *
+ * @param string ajuego: nombre de videojuego a acceder en la plataforma
+ * @return  
+*/
+void Plataforma::accedeVideojuego(string ajuego, float nprecio){
+	for (int i = 0; i < iv; i++){
+		if (ajuego == videojuegos[i].getNombre()){		
+			cout << "Nombre: " << videojuegos[i].getNombre();
+			cout << "\tPrecio: $" << videojuegos[i].getPrecio();
+			cout << "\t[PASADO]" << endl;			
+			
+			// Setters not working inside of a class method
+			videojuegos[i].setPrecio(nprecio);
+			
+			cout << "Nombre: " << videojuegos[i].getNombre();
+			cout << "\tPrecio: $" << videojuegos[i].getPrecio();
+			cout << "\t[ACTUALIZADO]" << endl;
+		}
+	}
+}
+
+/* 
+ * accedeVideojuego() permite al usuario [Cliente] acceder a un 
+ * videojuego específico a partir de ingresar el nombre de éste.
+ *
+ * @param string ajuego: nombre de videojuego a acceder en la plataforma
+ * @return  
+*/
+Videojuego Plataforma::accedeVideojuego(string ajuego){
+	int j;
+	for (int i = 0; i < iv; i++){
+		if (ajuego == videojuegos[i].getNombre()){
+			j = i;
+		}
+	}
+	return videojuegos[j];
 }
 
 /* 
@@ -129,8 +170,10 @@ Videojuego Plataforma::buscaVideojuego(string nj){
 */
 void Plataforma::muestraVideojuegos(){
 	cout << "VIDEOJUEGOS.\n";
-	for (int i = 0; i < iv; i++)
-		cout << "Nombre: " << videojuegos[i].getNombre() << "\tPrecio: $" << videojuegos[i].getPrecio() << endl;
+	for (int i = 0; i < iv; i++){
+		cout << "Nombre: " << videojuegos[i].getNombre();
+		cout << "\tPrecio: $" << videojuegos[i].getPrecio() << endl;
+	}
 }
 
 #endif // PLATAFORMA_H

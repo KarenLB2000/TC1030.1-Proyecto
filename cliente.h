@@ -113,11 +113,11 @@ void Cliente::printUsuario(){
  * @return
 */
 void Cliente::compraVideojuego(Plataforma p, string vnombre){
-	Videojuego z = p.buscaVideojuego(vnombre);
+	Videojuego z = p.accedeVideojuego(vnombre);
 	dinero = dinero - z.getPrecio();
 	biblioteca[ib] = z;
 	ib++;
-	cout << "DETALLES DE COMPRA." << endl;
+	cout << "\n\nDETALLES DE COMPRA." << endl;
 	cout << "Username: " << username << "\tEmail: " << email << endl;
 	cout << "Título" << z.getNombre() << "\tPrecio: $" << z.getPrecio() << endl;
 	cout << "¡Pago exitoso!" << "\tSaldo tras la compra: $" << dinero << endl;
@@ -132,11 +132,11 @@ void Cliente::compraVideojuego(Plataforma p, string vnombre){
 */
 void Cliente::muestraBiblioteca(){
 	if (ib == 0)
-		cout << "Sin videojuegos por el momento." << endl;
+		cout << "\nBiblioteca.\nSin videojuegos por el momento." << endl;
 	else{
-		cout << "Biblioteca." << endl;
+		cout << "\nBiblioteca." << endl;
 		for (int i = 0; i < ib; i++)
-			biblioteca[i].printVideojuego();
+			cout << biblioteca[i].printVideojuego();
 	}
 }
 

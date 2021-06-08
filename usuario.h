@@ -40,6 +40,7 @@ class Usuario{
 		string getEmail();
 		int getId();
 		void visitaPlataforma(Plataforma p);
+		void visualizaVideojuego(Plataforma p, string titulo);
 		
 		// Métodos abstractos [Sobreescritura]
 		virtual void printUsuario() = 0;
@@ -136,6 +137,18 @@ int Usuario::getId(){
 */
 void Usuario::visitaPlataforma(Plataforma p){
 	p.muestraVideojuegos();	
+}
+
+/* 
+ * visualizaVideojuego permite al usuario al acceder a la plataforma
+ * y buscar un videojuego específico en ésta
+ *
+ * @param Plataforma p: plataforma donde se encuentran los videojuegos
+ * string titulo: titulo de videojuego a buscar en la plataforma
+ * @return
+*/
+void Usuario::visualizaVideojuego(Plataforma p, string titulo){
+	p.buscaVideojuego(titulo);
 }
 
 #endif // USUARIO_H

@@ -100,12 +100,7 @@ void Administrador::printUsuario(){
  * @return
 */
 void Administrador::modificaVideojuego(Plataforma p, string vnombre, float nprecio){
-	Videojuego z = p.buscaVideojuego(vnombre);
-	cout << "DETALLES DEL VIDEOJUEGO." << endl;
-	z.printVideojuego();
-	z.setPrecio(nprecio);
-	cout << "DETALLES DEL VIDEOJUEGO [ACTUALIZADO]." << endl;
-	z.printVideojuego();
+	p.accedeVideojuego(vnombre, nprecio);
 }	
 	
 void Administrador::compraVideojuego(Plataforma p, string vnombre){
