@@ -9,6 +9,8 @@ En cambio, en cuanto a las caraterísticas de los usuarios:
 
 El cliente o usuario registrado es aquel usuario que ha efectuado su alta en el sistema y que puede realizar consultas sobre los videojuego en la plataforma y navegar por esta: ver las descripciones completas y abreviadas de los videojuegos e incluso comprarlos, agregándolos a su biblioteca. Por otra parte, el administrador es el usuario encargado de realizar todas las funciones de gestión del sistema, siendo capaz de modificar el precio de los videojuegos de la plataforma.
 
+**(Nota: Proyecto realizado para Programación Orientada A Objetos)**
+
 # Funcionalidad
 En el main() es posible seleccionar entre acceder como Cliente o Administrador, donde para cada uno se ha desarrollado un menú de opciones diferentes en que se muestran los distintos comportamientos de cada uno.
 
