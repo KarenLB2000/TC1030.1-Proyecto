@@ -1,33 +1,29 @@
-# TC1030.1 - Proyecto
-El objetivo del proyecto es desarrollar una plataforma o tienda virtual enfocada a la venta de videojuegos digitales. En este caso, se tienen dos tipos de usuarios: administrador y cliente. Es importante mencionar que dependiendo del tipo de usuario se dispondrá de métodos o comportamientos distitnos. 
+# OOP_Video_Game_Platform - Project
 
-Así pues, en el programa, la plataforma cuante con una serie de videojuegos para los cuales se pueden visualizar sus características más importante, siendo posible además la búsqueda y acceso a un videojuego en específico en ésta. Por otro lado, el cliente tendrá la opción de poder comprar estos videojuegos y el administrador podrá llevar a cabo funciones de gestión del sistema y modificaciones de la plataforma.
+## Objective
+The objective of the project is to develop a platform or virtual store focused on the sale of digital video games. Two types of users are considered: administrators and clients. Depending on the type of user, different methods or behaviors will be available.
 
-En resumen, en cuanto a las funciones del programa encontramos: Funciones de búsqueda, de compra y de gestión.
+## Functionality
+The platform provides a variety of video games, allowing users to view their key features and search for specific titles. Clients can purchase video games and add them to their library, while administrators can perform system management functions, including modifying game prices.
 
-En cambio, en cuanto a las caraterísticas de los usuarios:
+## Implementation
+The project is structured to include functionalities such as search, purchase, and management. Separate interfaces are provided for clients and administrators to access their respective functionalities.
 
-El cliente o usuario registrado es aquel usuario que ha efectuado su alta en el sistema y que puede realizar consultas sobre los videojuego en la plataforma y navegar por esta: ver las descripciones completas y abreviadas de los videojuegos e incluso comprarlos, agregándolos a su biblioteca. Por otra parte, el administrador es el usuario encargado de realizar todas las funciones de gestión del sistema, siendo capaz de modificar el precio de los videojuegos de la plataforma.
+## How to Run
+To compile the program, access the console and enter: "g++ main.cpp"
+To execute, enter in the console: "a.exe" or "./a.exe"
 
-**(Nota: Proyecto realizado para Programación Orientada A Objetos)**
+## Considerations
+- The program may not behave as expected if:
+  - A data type different from the expected is entered.
+  - An invalid option is entered in the client or administrator menu.
 
-# Funcionalidad
-En el main() es posible seleccionar entre acceder como Cliente o Administrador, donde para cada uno se ha desarrollado un menú de opciones diferentes en que se muestran los distintos comportamientos de cada uno.
+## Corrections
+For this last update, the following changes were made:
+- Modifications were made to the Platform Class Diagram.
+- The main was developed to check both administrator and client methods separately.
 
-# Consideraciones
-Para compilar el programa es necesario acceder a la consola e ingresar: "g++ main.cpp"
+**(Note: Project completed for Object-Oriented Programming course)**
 
-Para ejecutar, se debe ingresar en la consola: "a.exe" o "./a.exe"
-
-Asimismo, considerese que el programa no se ejecutará ni actuará de la forma espereada en el caso de:
-
-Introducir un tipo de dato diferente al esperado.
-
-Introducir el tipo de dato esperado, pero, no presente en las opciones dadas [Ej. Introducir una opción inválida en el menú de Cliente o Administrador]
-
-# Correciones
-Para este último avance se realizaron los siguientes cambios:
-
-Se hicieron modificaciones al Diagrama de Clases de Plataforma.
-
-Se desarrolló el main de forma tal que se pueda comprobar por un lado, los métodos de Administrador y por el otro, los métodos de Cliente.
+## Comments and Documentation
+Comments in the code are in Spanish.
